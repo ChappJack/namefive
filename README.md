@@ -5,6 +5,6 @@ Name Five is a game where you need to list words that belong to a specific categ
 > orange\
 > yellow\
 > pink\
-> gray\
+> gray
 
 Name Five was inspired by what annoying people say when you wear a band's shirt.
