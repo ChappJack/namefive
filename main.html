@@ -14,8 +14,9 @@ h1 {
 .orange-header {
   display: inline;
 }
-.input {
+.input1 {
   min-height: 1.5em;
+  max-height: 1.5em;
   border: 2px solid #ccc;
   padding: 10px;
   white-space: pre-wrap;
@@ -25,6 +26,68 @@ h1 {
   margin: 2px auto;
   container-name: input-container;
   font-family: "Inter";
+  color: black;
+  transition: color 0.2s ease;
+}
+.input2 {
+  min-height: 1.5em;
+  max-height: 1.5em;
+  border: 2px solid #ccc;
+  padding: 10px;
+  white-space: pre-wrap;
+  text-align: center;
+  font-size: 26px;
+  width: 400px;
+  margin: 2px auto;
+  container-name: input-container;
+  font-family: "Inter";
+  color: black;
+  transition: color 0.2s ease;
+}
+.input3 {
+  min-height: 1.5em;
+  max-height: 1.5em;
+  border: 2px solid #ccc;
+  padding: 10px;
+  white-space: pre-wrap;
+  text-align: center;
+  font-size: 26px;
+  width: 400px;
+  margin: 2px auto;
+  container-name: input-container;
+  font-family: "Inter";
+  color: black;
+  transition: color 0.2s ease;
+}
+.input4 {
+  min-height: 1.5em;
+  max-height: 1.5em;
+  border: 2px solid #ccc;
+  padding: 10px;
+  white-space: pre-wrap;
+  text-align: center;
+  font-size: 26px;
+  width: 400px;
+  margin: 2px auto;
+  container-name: input-container;
+  font-family: "Inter";
+  color: black;
+  transition: color 0.2s ease;
+}
+.input5 {
+  min-height: 1.5em;
+  max-height: 1.5em;
+  border: 2px solid #ccc;
+  padding: 10px;
+  white-space: pre-wrap;
+  text-align: center;
+  font-size: 26px;
+  width: 400px;
+  margin: 2px auto;
+  container-name: input-container;
+  font-family: "Inter";
+  color: black;
+  transition: color 0.2s ease;
 }
 @container input-container (min-width: 350px) {
   .input {
@@ -57,6 +120,19 @@ h1 {
   font-family: "Rubik";
 }
 
+  .widekey {
+  background-color: hsl(217, var(--saturation, 50%), 66%);
+  border: none;
+  position: relative;
+  font-size: 24px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  margin: 2px 0.25px;
+  border-radius: 8px;
+  font-family: "Rubik";
+}
+
 .key .small {
   position: absolute;
   top: 2px;
@@ -71,6 +147,10 @@ h1 {
 }
 </style>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Name Five!</title>
+<meta name="description" content="A word game where you list things in a category with limited letters.">
+<meta name="keywords" content="chappjack, namefive, name five, word, game, wordgame, word game, wordle, scrabble, github">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -86,7 +166,7 @@ h1 {
 <br>
 </div>
 <div style="padding: 5px">
-<div id="input1" class="input"></div><div id="input2" class="input"></div><div id="input3" class="input"></div><div id="input4" class="input"></div><div id="input5" class="input"></div><br><br>
+<div id="input1" class="input1"></div><div id="input2" class="input2"></div><div id="input3" class="input3"></div><div id="input4" class="input4"></div><div id="input5" class="input5"></div><br><br>
 <div id="letters"></div>
 </div>
 
@@ -124,6 +204,11 @@ h1 {
 <button id="b" class="key" onclick="add('b')">B<span id="bspan" class="small">3</span></button>
 <button id="n" class="key" onclick="add('n')">N<span id="nspan" class="small">3</span></button>
 <button id="m" class="key" onclick="add('m')">M<span id="mspan" class="small">3</span></button>
+
+<br>
+
+<button id="backspace" class="widekey" onclick="backspace('Backspace')"><b>⌫</b></button>
+<button id="backspace" class="widekey" onclick="submit()">ENTER</button>
 
 </div>
 
@@ -203,6 +288,10 @@ function submit() {
 	console.log("submitted")
 	if (chosengenre.includes(document.getElementById("input" + currentinput.toString()).innerHTML)) {
 	console.log("correct")
+	document.getElementById("input" + currentinput.toString()).style.color = "green"
+	setTimeout(() => {
+    document.getElementById("input" + currentinput.toString()).style.color = "black"
+  }, 10)
 	for (let i = 1; i < 6; i++) {
 		if (i != currentinput) {
 			if (document.getElementById("input" + i.toString()).innerHTML == document.getElementById("input" + currentinput.toString()).innerHTML) {
@@ -258,6 +347,12 @@ function submit() {
 		console.log(usedgenres)
 		refresh()
 	}
+} else {
+console.log("wrong")
+	document.getElementById("input" + currentinput.toString()).style.color = "red"
+	setTimeout(() => {
+    document.getElementById("input" + currentinput.toString()).style.color = "black"
+  }, 1000)
 }
 }
 
