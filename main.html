@@ -9,6 +9,9 @@ h1 {
 	font-size: 45px;
 	letter-spacing: 1.2px;
 }
+body {
+    overflow-y: hidden;
+}
 .gray-header,
 .blue-header,
 .orange-header {
@@ -147,7 +150,7 @@ h1 {
 }
 </style>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=0.75">
 <title>Name Five!</title>
 <meta name="description" content="A word game where you list things in a category with limited letters.">
 <meta name="keywords" content="chappjack, namefive, name five, word, game, wordgame, word game, wordle, scrabble, github">
@@ -172,43 +175,43 @@ h1 {
 
 <div style="text-align: center">
 
-<button id="q" class="key" onclick="add('q')">Q<span id="qspan" class="small">3</span></button>
-<button id="w" class="key" onclick="add('w')">W<span id="wspan" class="small">3</span></button>
-<button id="e" class="style-key" onclick="add('e')">E<span id="espan" class="small">3</span></button>
-<button id="r" class="key" onclick="add('r')">R<span id="rspan" class="small">3</span></button>
-<button id="t" class="key" onclick="add('t')">T<span id="tspan" class="small">3</span></button>
-<button id="y" class="key" onclick="add('y')">Y<span id="yspan" class="small">3</span></button>
-<button id="u" class="style-key" onclick="add('u')">U<span id="uspan" class="small">3</span></button>
-<button id="i" class="style-key" onclick="add('i')">I<span id="ispan" class="small">3</span></button>
-<button id="o" class="style-key" onclick="add('o')">O<span id="ospan" class="small">3</span></button>
-<button id="p" class="key" onclick="add('p')">P<span id="pspan" class="small">3</span></button>
+<button id="q" class="key" style="color: black" onclick="add('q')">Q<span id="qspan" class="small">3</span></button>
+<button id="w" class="key" style="color: black" onclick="add('w')">W<span id="wspan" class="small">3</span></button>
+<button id="e" class="style-key" style="color: black" onclick="add('e')">E<span id="espan" class="small">3</span></button>
+<button id="r" class="key" style="color: black" onclick="add('r')">R<span id="rspan" class="small">3</span></button>
+<button id="t" class="key" style="color: black" onclick="add('t')">T<span id="tspan" class="small">3</span></button>
+<button id="y" class="key" style="color: black" onclick="add('y')">Y<span id="yspan" class="small">3</span></button>
+<button id="u" class="style-key" style="color: black" onclick="add('u')">U<span id="uspan" class="small">3</span></button>
+<button id="i" class="style-key" style="color: black" onclick="add('i')">I<span id="ispan" class="small">3</span></button>
+<button id="o" class="style-key" style="color: black" onclick="add('o')">O<span id="ospan" class="small">3</span></button>
+<button id="p" class="key" style="color: black" onclick="add('p')">P<span id="pspan" class="small">3</span></button>
 
 <br>
 
-<button id="a" class="style-key" onclick="add('a')">A<span id="aspan" class="small">3</span></button>
-<button id="s" class="key" onclick="add('s')">S<span id="sspan" class="small">3</span></button>
-<button id="d" class="key" onclick="add('d')">D<span id="dspan" class="small">3</span></button>
-<button id="f" class="key" onclick="add('f')">F<span id="fspan" class="small">3</span></button>
-<button id="g" class="key" onclick="add('g')">G<span id="gspan" class="small">3</span></button>
-<button id="h" class="key" onclick="add('h')">H<span id="hspan" class="small">3</span></button>
-<button id="j" class="key" onclick="add('j')">J<span id="jspan" class="small">3</span></button>
-<button id="k" class="key" onclick="add('k')">K<span id="kspan" class="small">3</span></button>
-<button id="l" class="key" onclick="add('l')">L<span id="lspan" class="small">3</span></button>
+<button id="a" class="style-key" style="color: black" onclick="add('a')">A<span id="aspan" class="small">3</span></button>
+<button id="s" class="key" style="color: black" onclick="add('s')">S<span id="sspan" class="small">3</span></button>
+<button id="d" class="key" style="color: black" onclick="add('d')">D<span id="dspan" class="small">3</span></button>
+<button id="f" class="key" style="color: black" onclick="add('f')">F<span id="fspan" class="small">3</span></button>
+<button id="g" class="key" style="color: black" onclick="add('g')">G<span id="gspan" class="small">3</span></button>
+<button id="h" class="key" style="color: black" onclick="add('h')">H<span id="hspan" class="small">3</span></button>
+<button id="j" class="key" style="color: black" onclick="add('j')">J<span id="jspan" class="small">3</span></button>
+<button id="k" class="key" style="color: black" onclick="add('k')">K<span id="kspan" class="small">3</span></button>
+<button id="l" class="key" style="color: black" onclick="add('l')">L<span id="lspan" class="small">3</span></button>
 
 <br>
 
-<button id="z" class="key" onclick="add('z')">Z<span id="zspan" class="small">3</span></button>
-<button id="x" class="key" onclick="add('x')">X<span id="xspan" class="small">3</span></button>
-<button id="c" class="key" onclick="add('c')">C<span id="cspan" class="small">3</span></button>
-<button id="v" class="key" onclick="add('v')">V<span id="vspan" class="small">3</span></button>
-<button id="b" class="key" onclick="add('b')">B<span id="bspan" class="small">3</span></button>
-<button id="n" class="key" onclick="add('n')">N<span id="nspan" class="small">3</span></button>
-<button id="m" class="key" onclick="add('m')">M<span id="mspan" class="small">3</span></button>
+<button id="z" class="key" style="color: black" onclick="add('z')">Z<span id="zspan" class="small">3</span></button>
+<button id="x" class="key" style="color: black" onclick="add('x')">X<span id="xspan" class="small">3</span></button>
+<button id="c" class="key" style="color: black" onclick="add('c')">C<span id="cspan" class="small">3</span></button>
+<button id="v" class="key" style="color: black" onclick="add('v')">V<span id="vspan" class="small">3</span></button>
+<button id="b" class="key" style="color: black" onclick="add('b')">B<span id="bspan" class="small">3</span></button>
+<button id="n" class="key" style="color: black" onclick="add('n')">N<span id="nspan" class="small">3</span></button>
+<button id="m" class="key" style="color: black" onclick="add('m')">M<span id="mspan" class="small">3</span></button>
 
 <br>
 
-<button id="backspace" class="widekey" onclick="backspace('Backspace')"><b>⌫</b></button>
-<button id="backspace" class="widekey" onclick="submit()">ENTER</button>
+<button id="backspace" style="color: black" class="widekey" onclick="backspace('Backspace')"><b>⌫</b></button>
+<button id="backspace" style="color: black" class="widekey" onclick="submit()">ENTER</button>
 
 </div>
 
