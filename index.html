@@ -1,0 +1,180 @@
+<h1></h1>
+<style>
+@font-face {
+  font-family: SkinnyChick;
+  src: url("fonts/SkinnyChick.ttf") format("truetype");
+}
+h1 {
+	font-family: SkinnyChick;
+	font-size: 45px;
+	letter-spacing: 1.2px;
+}
+h2 {
+	font-family: SkinnyChick;
+	font-size: 34px;
+	letter-spacing: 1.2px;
+}
+.gray-header,
+.blue-header,
+.orange-header {
+  display: inline;
+}
+.input {
+  min-height: 1.5em;     /* Keeps it visibly tall enough even when empty */
+  border: 1px solid #ccc; /* Optional: gives a visible box */
+  padding: 5px;
+  white-space: pre-wrap;
+  text-align: center;
+  font-size: 26px;
+  width: 400px;
+  margin: 2px auto;
+  container-name: input-container
+}
+@container input-container (min-width: 350px) {
+  .input {
+    font-size: 2em;
+  }
+}
+  
+  .key {
+  background-color: hsl(217, var(--saturation, 50%), 66%);
+  border: none;
+  position: relative;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  margin: 2px 0.25px;
+  border-radius: 8px;
+}
+  .style-key {
+  background-color: hsl(28, var(--saturation, 50%), 52%);
+  border: none;
+  position: relative;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  margin: 2px 0.25px;
+  border-radius: 8px;
+}
+
+.key .small {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 12px;
+}
+.style-key .small {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 12px;
+}
+.blur-box {
+  padding: 10px;
+  box-shadow: 5px 5px 8px gray;
+  max-width: 620px;
+  margin: 20px;
+  margin: auto;
+}
+.bluebutton {
+  background-color: #5675a8;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: "Tahoma";
+}
+.bluebutton:hover {
+background-color: #8297ba;
+transform: scale(0.95);
+}
+.orangebutton {
+  background-color: #bd814d;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: "Tahoma";
+}
+.orangebutton:hover {
+background-color: #bf9e82;
+transform: scale(0.95);
+}
+</style>
+<script>
+customcount = 5
+custombool = 0
+
+function custom(custombool) {
+	if (custombool == 1) {
+		roundcount = 1
+	} else {
+		roundcount = customcount
+	}
+	const url = `main.html?rounds=${roundcount}&custom=${custombool}`
+    window.location.href = url
+}
+function customadjust(nudge) {
+	customcount += nudge
+	document.getElementById("custombutton").innerHTML = ("custom (" + customcount + ")")
+}
+function set(amount) {
+	custombool = 0
+	const url = `main.html?rounds=${amount}&custom=${custombool}`
+    window.location.href = url
+}
+function processdata() {
+	if (document.getElementById("data").value == "" || document.getElementById("bluetitle").value == "" || document.getElementById("orangetitle").value == "") {
+		return
+	}
+	const titlearray = [document.getElementById("bluetitle").value, document.getElementById("orangetitle").value, document.getElementById("description").value]
+	dataarray = document.getElementById("data").value.split(",").map(item => item.trim())
+	const numb = dataarray.length
+	dataarray = [...new Set(dataarray)]
+	const numa = dataarray.length
+	console.log(titlearray)
+	dataarray.splice(0, 0, titlearray)
+	console.log(dataarray)
+	if (dataarray.length < 6) {
+		document.getElementById("error").innerHTML = "data must be comprised of 5 or more values. " + (numb - numa) + " duplicates removed"
+		return
+	}
+	localStorage.setItem("data", JSON.stringify(dataarray))
+	custom(1)
+}
+</script>
+<div style="text-align: center">
+<h1 class="gray-header">WELCOME TO </h1><h1 id="blue-header" class="blue-header" style="color: #5675a8">NAME </h1><h1 id="orange-header" class="orange-header" style="color: #bd814d">FIVE</h1>
+<br><br><br><br><br>
+<div class="blur-box">
+<h2 class="blue-header" style="color: #5675a8">SELECT GAME</h2><br><br>
+<button onclick="set(1)" class="bluebutton">single</button><button onclick="set(2)" class="bluebutton">double</button><button onclick="set(3)" class="bluebutton">triad</button><button onclick="set(5)" class="bluebutton">quintet</button><button onclick="customadjust(-1)" class="bluebutton">◄</button><button onclick="custom(0)" class="bluebutton" id="custombutton">custom (5)</button><button onclick="customadjust(1)" class="bluebutton">►</button><button class="orangebutton">daily</button>
+</div>
+<br>
+<br>
+<h1 class="gray-header" style="color: #6b6b6b">CUSTOM GAME</h1>
+<br><br><br>
+<div class="blur-box">
+<h2 class="orange-header" style="color: #bd814d">CREATE CATEGORY</h2><br><br>
+<div style="color: #5675a8; font-family: SkinnyChick; font-weight: bold; letter-spacing: 1px; font-size: 17px"">TITLE</div><input id="bluetitle"></input><br>
+<div style="color: #bd814d; font-family: SkinnyChick; font-weight: bold; letter-spacing: 1px; font-size: 17px">TITLE</div><input id="orangetitle"></input><br>
+<div style="color: #8a8a8a;"><i>description (optional)</i></div><input id="description"></input><br>
+<div><b>Data</b></div><input id="data"></input><br>
+<button onclick="processdata()">Process</button>
+<div style="color: red; font-family: Tahoma; font-size: 14px" id="error">be sure to separate data with a comma (,)</div>
+</div>
+</div>
