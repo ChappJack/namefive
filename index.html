@@ -20,6 +20,9 @@ h2 {
 	font-size: 34px;
 	letter-spacing: 1.2px;
 }
+body {
+    overflow-y: hidden;
+}
 .gray-header,
 .blue-header,
 .orange-header {
@@ -27,12 +30,12 @@ h2 {
 }
 .input {
   min-height: 1.5em;     /* Keeps it visibly tall enough even when empty */
-  border: 1px solid #ccc; /* Optional: gives a visible box */
+  border: 1.5px solid #ccc; /* Optional: gives a visible box */
   padding: 5px;
   white-space: pre-wrap;
   text-align: center;
-  font-size: 26px;
-  width: 400px;
+  font-size: 14px;
+  width: 200px;
   margin: 2px auto;
   container-name: input-container
 }
@@ -120,6 +123,42 @@ transform: scale(0.95);
 background-color: #bf9e82;
 transform: scale(0.95);
 }
+.thinbluebutton {
+  background-color: #5675a8;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: "Tahoma";
+}
+.thinbluebutton:hover {
+background-color: #8297ba;
+transform: scale(0.95);
+}
+.thinorangebutton {
+  background-color: #bd814d;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: "Tahoma";
+}
+.thinorangebutton:hover {
+background-color: #bf9e82;
+transform: scale(0.95);
+}
 </style>
 <script>
 customcount = 5
@@ -162,25 +201,48 @@ function processdata() {
 	localStorage.setItem("data", JSON.stringify(dataarray))
 	custom(1)
 }
+function processshared() {
+	localStorage.setItem("data", atob(document.getElementById("sharedata").value))
+	custom(1)
+}
+function encodedata() {
+	if (document.getElementById("data").value == "" || document.getElementById("bluetitle").value == "" || document.getElementById("orangetitle").value == "") {
+		return
+	}
+	const titlearray = [document.getElementById("bluetitle").value, document.getElementById("orangetitle").value, document.getElementById("description").value]
+	dataarray = document.getElementById("data").value.split(",").map(item => item.trim())
+	dataarray = [...new Set(dataarray)]
+	console.log(titlearray)
+	dataarray.splice(0, 0, titlearray)
+	console.log(dataarray)
+	if (dataarray.length < 6) {
+		document.getElementById("error").innerHTML = "data must be comprised of 5 or more values. " + (numb - numa) + " duplicates removed"
+		return
+	}
+<!-- 	document.getElementById("data").select() // selects text for aesthetic purposes
+	document.getElementById("data").setSelectionRange(0, 99999) // mobile -->
+	navigator.clipboard.writeText(btoa(JSON.stringify(dataarray)))
+	document.getElementById("error").innerHTML = "copied to clipboard!"
+}
 </script>
 <div style="text-align: center">
 <h1 class="gray-header">WELCOME TO </h1><h1 id="blue-header" class="blue-header" style="color: #5675a8">NAME </h1><h1 id="orange-header" class="orange-header" style="color: #bd814d">FIVE</h1>
-<br><br><br><br><br>
+<br><br><br>
 <div class="blur-box">
 <h2 class="blue-header" style="color: #5675a8">SELECT GAME</h2><br><br>
 <button onclick="set(1)" class="bluebutton">single</button><button onclick="set(2)" class="bluebutton">double</button><button onclick="set(3)" class="bluebutton">triad</button><button onclick="set(5)" class="bluebutton">quintet</button><button onclick="customadjust(-1)" class="bluebutton">◄</button><button onclick="custom(0)" class="bluebutton" id="custombutton">custom (5)</button><button onclick="customadjust(1)" class="bluebutton">►</button><button class="orangebutton">daily</button>
 </div>
 <br>
-<br>
-<h1 class="gray-header" style="color: #6b6b6b">CUSTOM GAME</h1>
-<br><br><br>
+<h1 class="gray-header" style="color: #6b6b6b; font-size: 40px">CUSTOM GAME</h1>
+<br><br>
 <div class="blur-box">
 <h2 class="orange-header" style="color: #bd814d">CREATE CATEGORY</h2><br><br>
-<div style="color: #5675a8; font-family: SkinnyChick; font-weight: bold; letter-spacing: 1px; font-size: 17px"">TITLE</div><input id="bluetitle"></input><br>
-<div style="color: #bd814d; font-family: SkinnyChick; font-weight: bold; letter-spacing: 1px; font-size: 17px">TITLE</div><input id="orangetitle"></input><br>
-<div style="color: #8a8a8a;"><i>description (optional)</i></div><input id="description"></input><br>
-<div><b>Data</b></div><input id="data"></input><br>
-<button onclick="processdata()">Process</button>
+<div style="color: #5675a8; font-family: SkinnyChick; font-weight: bold; letter-spacing: 1px; font-size: 17px">TITLE</div><input id="bluetitle" class="input" autocomplete="off"></input><br>
+<div style="color: #bd814d; font-family: SkinnyChick; font-weight: bold; letter-spacing: 1px; font-size: 17px">TITLE</div><input id="orangetitle" class="input" autocomplete="off"></input><br>
+<div style="color: #8a8a8a;"><i>description (optional)</i></div><input id="description" class="input" autocomplete="off"></input><br>
+<div><b>Data</b></div><input id="data" class="input" autocomplete="off"></input><br>
+<button onclick="processdata()" class="thinbluebutton">Process</button><button onclick="encodedata()" class="thinorangebutton">Copy share data</button>
 <div style="color: red; font-family: Tahoma; font-size: 14px" id="error">be sure to separate data with a comma (,)</div>
+<input id="sharedata" class="input" autocomplete="off"></input><button onclick="processshared()" class="thinorangebutton">Play shared game</button>
 </div>
 </div>
