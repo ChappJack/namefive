@@ -21,7 +21,7 @@ h2 {
 	letter-spacing: 1.2px;
 }
 body {
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 .gray-header,
 .blue-header,
@@ -191,7 +191,7 @@ transform: scale(0.95);
   font-size: 16px;
   margin: 4px 2px;
   font-family: "Tahoma";
-  position: absolute;
+  position: fixed;
   bottom: 60px;
   right: 5px;
   opacity: 0.97;
@@ -273,12 +273,11 @@ function showtut() {
 <div style="text-align: center">
 <h1 class="gray-header">WELCOME TO </h1><h1 id="blue-header" class="blue-header" style="color: #5675a8">NAME </h1><h1 id="orange-header" class="orange-header" style="color: #bd814d">FIVE</h1>
 <br><br><br>
-<div class="blur-box">
+<div class="blur-box" style="padding-bottom: 20px;">
 <h2 class="blue-header" style="color: #5675a8">SELECT GAME</h2><br><br>
 <button onclick="set(1)" class="bluebutton">single</button><button onclick="set(2)" class="bluebutton">double</button><button onclick="set(3)" class="bluebutton">triad</button><button onclick="set(5)" class="bluebutton">quintet</button><button onclick="customadjust(-1)" class="bluebutton">◄</button><button onclick="custom(0)" class="bluebutton" id="custombutton">custom (5)</button><button onclick="customadjust(1)" class="bluebutton">►</button><button class="orangebutton">daily</button>
 </div>
-<br>
-<h1 class="gray-header" style="color: #6b6b6b; font-size: 40px">CUSTOM GAME</h1>
+<h1 class="gray-header" style="color: #6b6b6b; font-size: 40px;">CUSTOM GAME</h1>
 <br><br>
 <div class="blur-box">
 <h2 class="orange-header" style="color: #bd814d">CREATE CATEGORY</h2><br><br>
