@@ -159,6 +159,44 @@ transform: scale(0.95);
 background-color: #bf9e82;
 transform: scale(0.95);
 }
+.graybutton {
+  background-color: #d6d6d6;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: "Tahoma";
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+}
+.graybutton:hover {
+background-color: #e6e6e6;
+transform: scale(0.95);
+}
+.tutorial {
+  background-color: #d6d6d6;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: none; /* should be inline-block*/
+  font-size: 16px;
+  margin: 4px 2px;
+  font-family: "Tahoma";
+  position: absolute;
+  bottom: 60px;
+  right: 5px;
+  opacity: 0.97;
+  border-radius: 5px;
+}
 </style>
 <script>
 customcount = 5
@@ -224,6 +262,13 @@ function encodedata() {
 	navigator.clipboard.writeText(btoa(JSON.stringify(dataarray)))
 	document.getElementById("error").innerHTML = "copied to clipboard!"
 }
+function showtut() {
+	if (window.getComputedStyle(document.getElementById("tutorial")).display == "none") {
+		document.getElementById("tutorial").style.display = "inline-block"
+	} else {
+		document.getElementById("tutorial").style.display = "none"
+	}
+}
 </script>
 <div style="text-align: center">
 <h1 class="gray-header">WELCOME TO </h1><h1 id="blue-header" class="blue-header" style="color: #5675a8">NAME </h1><h1 id="orange-header" class="orange-header" style="color: #bd814d">FIVE</h1>
@@ -244,5 +289,26 @@ function encodedata() {
 <button onclick="processdata()" class="thinbluebutton">Process</button><button onclick="encodedata()" class="thinorangebutton">Copy share data</button>
 <div style="color: red; font-family: Tahoma; font-size: 14px" id="error">be sure to separate data with a comma (,)</div>
 <input id="sharedata" class="input" autocomplete="off"></input><button onclick="processshared()" class="thinorangebutton">Play shared game</button>
+<button class="graybutton" onclick="showtut()">How to play?</button>
+<div id="tutorial" class="tutorial">
+<h2 class="blue-header" style="color: #5675a8">TUTORIAL</h2><br>
+When the game begins, you are given a <strong style="color: #bd814d; font-family: SkinnyChick">CATEGORY</strong>.<br>
+This category can be anything, from colors to U.S. Presidents.<br>
+In order to proceed to the next round (or complete the game),<br>
+you need to <strong style="color: #5675a8; font-family: SkinnyChick">NAME </strong><strong style="color: #bd814d; font-family: SkinnyChick">FIVE</strong> of them.<br>
+When you input text correctly, it will become green and<br>
+you will proceed to the next box.<br>
+<div style="width: 54px; height: 26px; overflow: hidden; position: relative; margin: 0 auto; margin-top: 5px; margin-bottom: 5px"><img src="assets/nfcorrect.gif" alt="Correct answer" style="position: absolute; top: -5px; left: 0; margin: 0 auto">
+</div>
+When you input text incorrectly, it will momentarily<br>
+flash red, signaling for you to try again.
+<div style="width: 64px; height: 26px; overflow: hidden; position: relative; margin: 0 auto; margin-top: 5px; margin-bottom: 5px"><img src="assets/nfincorrect.gif" alt="Incorrect answer" style="position: absolute; top: -1.5px; left: 0; margin: 0 auto">
+</div>
+Every letter you type subtracts one from your register.<br>
+You begin with three of every letter, and on every correct<br>
+answer, you get back random letters. When a round ends,<br>
+you will refill every letter under 2 to 2.<br>
+<div style="width: 238px; height: 140px; overflow: hidden; position: relative; margin: 0 auto; margin-top: 5px; margin-bottom: 5px"><img src="assets/nfkeyboard.gif" alt="Keyboard" style="position: absolute; top: -1.5px; left: 0; margin: 0 auto">
+</div>
 </div>
 </div>
